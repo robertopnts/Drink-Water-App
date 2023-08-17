@@ -28,3 +28,9 @@ source venv/Scripts/activate
 pip install -r requirements.txt
 ```
 ## Pronto!
+
+### Para executar as endpoints do projeto, é necessário apenas iniciar o servidor:
+
+```shell
+python manage.py runserver
+```
