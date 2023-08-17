@@ -1,26 +1,9 @@
-from typing import Iterable, Optional
 from django.db import models
-from django.utils import timezone
 from pessoas.models import Pessoa
 
 
-class MetaConsumo (models.Model):
-    meta_consumo = models.IntegerField(blank=True)
-    data = models.DateField(auto_now_add=True)
-
-    pessoa = models.ForeignKey(
-        "pessoas.Pessoa",
-        on_delete=models.CASCADE,
-        related_name="metas_consumo"
-    )
-
-    def __str__(self) -> str:
-        return f"({self.id} Consumos do dia {self.data})"
-
-
-
 class Consumo(models.Model):
-    quantidade = models.PositiveIntegerField (help_text = "Por favor, inserir valor inteiro em ml")
+    quantidade = models.IntegerField (help_text = "Por favor, inserir valor inteiro em ml")
     criado_em = models.DateField(auto_now_add = True)
 
     pessoa = models.ForeignKey(
@@ -30,7 +13,7 @@ class Consumo(models.Model):
     )
 
     meta_diaria = models.ForeignKey(
-        "consumos.MetaConsumo",
+        "metas_diarias.MetaConsumo",
         on_delete=models.CASCADE,
         related_name="consumos"
     )
