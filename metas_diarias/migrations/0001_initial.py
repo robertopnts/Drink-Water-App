@@ -8,13 +8,12 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("metas_diarias", "0001_initial"),
         ("pessoas", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Consumo",
+            name="MetaConsumo",
             fields=[
                 (
                     "id",
@@ -25,26 +24,13 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                (
-                    "quantidade",
-                    models.IntegerField(
-                        help_text="Por favor, inserir valor inteiro em ml"
-                    ),
-                ),
-                ("criado_em", models.DateField(auto_now_add=True)),
-                (
-                    "meta_diaria",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name="consumos",
-                        to="metas_diarias.metaconsumo",
-                    ),
-                ),
+                ("meta_consumo", models.IntegerField(blank=True)),
+                ("data", models.DateField(auto_now_add=True)),
                 (
                     "pessoa",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name="consumos",
+                        related_name="metas_consumo",
                         to="pessoas.pessoa",
                     ),
                 ),
