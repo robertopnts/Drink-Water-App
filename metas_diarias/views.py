@@ -26,6 +26,7 @@ class MetasConsumoView(APIView):
                 consumido += consumo["quantidade"]
 
             diario["consumiu"] = consumido
+            diario["meta_batida"] = consumido >= diario["meta_consumo"]
 
         
         return Response(diarios)
@@ -44,6 +45,8 @@ class MetaConsumoDetalhadaView(APIView):
         consumo_serializer = ConsumoSerializer(consumos, many=True)
 
         diario_serializer = MetaConsumoSerializer(meta)
+
+        
 
         diario_obj = diario_serializer.data
         diario_obj["consumos"] = consumo_serializer.data
