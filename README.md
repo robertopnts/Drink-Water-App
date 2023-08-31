@@ -27,6 +27,13 @@ source venv/Scripts/activate
 ```shell
 pip install -r requirements.txt
 ```
+
+### 4 Executar as migrações:
+
+```shell
+python manage.py migrate
+```
+
 ## Pronto!
 
 ### Para executar as endpoints do projeto, é necessário apenas iniciar o servidor:
